@@ -33,7 +33,8 @@ This prevented considering only working trucks/push_cart candidates for finding 
 2. checkout develop
 3. Install maven on your local - https://www.baeldung.com/install-maven-on-windows-linux-mac
 4. Install docker - https://docs.docker.com/engine/install/ 
-5. run "bash start_service.sh"
-6. The project should be up and running on your local. Can be tested on swagger http://localhost:8080/swagger-ui/index.html
+5. Install mongo
+6. run "bash start_service.sh"
+7. The project should be up and running on your local. Can be tested on swagger http://localhost:8080/swagger-ui/index.html
 
 Data referenced from - https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat

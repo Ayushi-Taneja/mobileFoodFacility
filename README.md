@@ -33,12 +33,15 @@ This prevented considering only working trucks/push_cart candidates for finding 
 2. checkout develop
 3. Install maven on your local - https://www.baeldung.com/install-maven-on-windows-linux-mac
 4. Install docker - https://docs.docker.com/engine/install/
+Can be directly skipped to step 12
 5. run "mvn clean install" from within the project's root directory
 6. run "docker build -t java_api ." again from /food directory
 7. run "docker-compose build"
 8. run "docker-compose up". This spins up 2 containers, one for the backend application and other for mongo 
 9. connect to mongo running on 27018 port (mentioned in docker-compose)
 10. create index -> db.mobile_food_facility_permit.createIndex( { "location" : "2dsphere" } )
+11. Run mongo imports command to populate test data - mongoimport --port 27018 --db=truck --collection=mobile_food_facility_permit --type=json --file=src/main/resources/trucks.json
+12. run "bash start_service.sh"
 11. The project should be up and running on your local and endpoints can be hit on localhost:8080
 
 Data referenced from - https://data.sfgov.org/Economy-and-Community/Mobile-Food-Facility-Permit/rqzj-sfat

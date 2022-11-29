@@ -14,6 +14,7 @@ import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
+import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class FoodFacilityService {
         return result;
     }
 
-    public List<FoodFacilityPermit> getDataByExpiryDate(String expiryDate) {
+    public List<FoodFacilityPermit> getDataByExpiryDate(String expiryDate) throws ParseException {
         if(expiryDate == null || expiryDate.isBlank() || !foodTruckUtility.isDateValid(expiryDate)){
             throw new IllegalArgumentException();
         }
@@ -57,7 +58,7 @@ public class FoodFacilityService {
         return result;
     }
 
-    public FoodFacilityPermit addFoodTruck(AddFoodTruckRequest addFoodTruckRequest) {
+    public FoodFacilityPermit addFoodTruck(AddFoodTruckRequest addFoodTruckRequest) throws ParseException {
         if(addFoodTruckRequest == null || FacilityType.fromValue(addFoodTruckRequest.getFacilityType()).isEmpty()) throw new IllegalArgumentException();
         MobileFoodFacilityPermit mobileFoodFacilityPermit = convertToResponse.createFoodTruckModel(addFoodTruckRequest);
         mobileFoodRepository.save(mobileFoodFacilityPermit);

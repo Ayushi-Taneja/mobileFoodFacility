@@ -38,7 +38,7 @@ public class ConvertToResponse {
         return result;
     }
 
-    public MobileFoodFacilityPermit createFoodTruckModel(AddFoodTruckRequest addFoodTruckRequest) {
+    public MobileFoodFacilityPermit createFoodTruckModel(AddFoodTruckRequest addFoodTruckRequest) throws ParseException {
         MobileFoodFacilityPermit permit = new MobileFoodFacilityPermit();
         BeanUtils.copyProperties(addFoodTruckRequest, permit);
         permit.setFacilityType(FacilityType.fromValue(addFoodTruckRequest.getFacilityType()).orElse(FacilityType.TRUCK));
@@ -55,31 +55,6 @@ public class ConvertToResponse {
 
     public FoodFacilityPermit createFoodTruckResponse(MobileFoodFacilityPermit mobileFoodFacilityPermit) {
         if(mobileFoodFacilityPermit == null) return null;
-        /*FoodFacilityPermit result = FoodFacilityPermit.builder().locationId(mobileFoodFacilityPermit.getLocationId())
-                .address(mobileFoodFacilityPermit.getAddress())
-                .applicant(mobileFoodFacilityPermit.getApplicant())
-                .approved(mobileFoodFacilityPermit.getApproved())
-                .block(mobileFoodFacilityPermit.getBlock())
-                .blocklot(mobileFoodFacilityPermit.getBlocklot())
-                .cnn(mobileFoodFacilityPermit.getCnn())
-                .foodItems(mobileFoodFacilityPermit.getFoodItems())
-                .daysHours(mobileFoodFacilityPermit.getDaysHours())
-                .expirationDate(mobileFoodFacilityPermit.getExpirationDate())
-                .facilityType(mobileFoodFacilityPermit.getFacilityType())
-                .latitude(mobileFoodFacilityPermit.getLatitude())
-                .longitude(mobileFoodFacilityPermit.getLongitude())
-                .x(mobileFoodFacilityPermit.getX())
-                .y(mobileFoodFacilityPermit.getY())
-                .lot(mobileFoodFacilityPermit.getLot())
-                .permit(mobileFoodFacilityPermit.getPermit())
-                .locationDescription(mobileFoodFacilityPermit.getLocationDescription())
-                .noiSent(mobileFoodFacilityPermit.getNoiSent())
-                .priorPermit(mobileFoodFacilityPermit.getPriorPermit())
-                .schedule(mobileFoodFacilityPermit.getSchedule())
-                .received(mobileFoodFacilityPermit.getReceived())
-                .status(mobileFoodFacilityPermit.getStatus())
-                .location(mobileFoodFacilityPermit.getLocation().getCoordinates())
-                .build();*/
         FoodFacilityPermit result = new FoodFacilityPermit();
         BeanUtils.copyProperties(mobileFoodFacilityPermit, result);
         result.setLocation(mobileFoodFacilityPermit.getLocation().getCoordinates());

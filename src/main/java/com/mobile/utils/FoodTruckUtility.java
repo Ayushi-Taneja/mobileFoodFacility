@@ -13,16 +13,14 @@ import java.util.Date;
 public class FoodTruckUtility {
 
     public boolean isDateValid(String expiryDate) {
-        return GenericValidator.isDate(expiryDate, "dd-mm-yyyy", true);
+        return GenericValidator.isDate(expiryDate, "dd-MM-yyyy", true);
     }
 
-    public Date convertStringToDate(String dateString){
-        try {
-            if(dateString == null || dateString.isBlank()) return null;
-            return new SimpleDateFormat("dd-MM-yyyy").parse(dateString);
-        } catch (ParseException e) {
-            log.error("Error parsing string to date {}", dateString, e);
-            return null;
+    public Date convertStringToDate(String dateString) throws ParseException {
+        if(dateString == null || dateString.isBlank()) return null;
+        if(!isDateValid(dateString)){
+            throw new IllegalArgumentException();
         }
+        return new SimpleDateFormat("dd-MM-yyyy").parse(dateString);
     }
 }

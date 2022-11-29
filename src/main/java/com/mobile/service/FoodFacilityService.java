@@ -1,5 +1,6 @@
 package com.mobile.service;
 
+import com.mobile.constant.FacilityType;
 import com.mobile.constant.Status;
 import com.mobile.model.MobileFoodFacilityPermit;
 import com.mobile.repository.MobileFoodRepository;
@@ -57,7 +58,7 @@ public class FoodFacilityService {
     }
 
     public FoodFacilityPermit addFoodTruck(AddFoodTruckRequest addFoodTruckRequest) {
-        if(addFoodTruckRequest == null) throw new IllegalArgumentException();
+        if(addFoodTruckRequest == null || FacilityType.fromValue(addFoodTruckRequest.getFacilityType()).isEmpty()) throw new IllegalArgumentException();
         MobileFoodFacilityPermit mobileFoodFacilityPermit = convertToResponse.createFoodTruckModel(addFoodTruckRequest);
         mobileFoodRepository.save(mobileFoodFacilityPermit);
         return convertToResponse.createFoodTruckResponse(mobileFoodFacilityPermit);

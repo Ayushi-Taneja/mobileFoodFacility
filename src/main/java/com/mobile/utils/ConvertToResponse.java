@@ -1,5 +1,6 @@
 package com.mobile.utils;
 
+import com.mobile.constant.FacilityType;
 import com.mobile.model.MobileFoodFacilityPermit;
 import com.mobile.request.AddFoodTruckRequest;
 import com.mobile.response.FoodFacilityPermit;
@@ -40,6 +41,7 @@ public class ConvertToResponse {
     public MobileFoodFacilityPermit createFoodTruckModel(AddFoodTruckRequest addFoodTruckRequest) {
         MobileFoodFacilityPermit permit = new MobileFoodFacilityPermit();
         BeanUtils.copyProperties(addFoodTruckRequest, permit);
+        permit.setFacilityType(FacilityType.fromValue(addFoodTruckRequest.getFacilityType()).orElse(FacilityType.TRUCK));
         String street = addFoodTruckRequest.getLocationDescription() == null || addFoodTruckRequest.getLocationDescription().isBlank() ? null :
                 addFoodTruckRequest.getLocationDescription().substring(0, addFoodTruckRequest.getLocationDescription().indexOf(":"));
         permit.setStreet(street);

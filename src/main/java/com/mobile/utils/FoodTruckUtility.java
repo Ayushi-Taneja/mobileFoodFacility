@@ -18,6 +18,7 @@ public class FoodTruckUtility {
 
     public Date convertStringToDate(String dateString){
         try {
+            if(dateString == null || dateString.isBlank()) return null;
             return new SimpleDateFormat("dd-MM-yyyy").parse(dateString);
         } catch (ParseException e) {
             log.error("Error parsing string to date {}", dateString, e);

@@ -16,7 +16,7 @@ public class AddFoodTruckRequest {
     @JsonProperty(value = "applicant", required = true)
     private String applicant;
     @JsonProperty(value = "facilityType", required = true)
-    private FacilityType facilityType;
+    private String facilityType;
     @JsonProperty("cnn")
     private Integer cnn;
     @JsonProperty("locationDescription")

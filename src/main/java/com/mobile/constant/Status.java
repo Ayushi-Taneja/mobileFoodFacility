@@ -8,7 +8,9 @@ public enum Status {
 
     REQUESTED("REQUESTED"),
     APPROVED("APPROVED"),
-    EXPIRED("EXPIRED");
+    EXPIRED("EXPIRED"),
+    SUSPEND("SUSPEND"),
+    ISSUED("ISSUED");
 
     @Getter
     String value;

@@ -11,12 +11,11 @@ import java.util.List;
 
 public interface MobileFoodRepository extends MongoRepository<MobileFoodFacilityPermit, Integer> {
 
-
     List<MobileFoodFacilityPermit> findAllByApplicant(String applicantName);
 
     List<MobileFoodFacilityPermit> findAllByStreet(String streetName);
 
     List<MobileFoodFacilityPermit> findAllByExpirationDateLessThanEqual(Date expiry);
 
-    List<MobileFoodFacilityPermit> findByStatusNotAndLocationNear(Status status, GeoJsonPoint point, Pageable pageable);
+    List<MobileFoodFacilityPermit> findByStatusAndLocationNear(Status status, GeoJsonPoint point, Pageable pageable);
 }

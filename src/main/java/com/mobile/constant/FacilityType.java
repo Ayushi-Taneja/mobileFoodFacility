@@ -7,7 +7,8 @@ import java.util.Optional;
 public enum FacilityType {
 
     TRUCK("Truck"),
-    PUSH_CART("Push Cart");
+    PUSH_CART("Push Cart"),
+    UNKNOWN("");
 
     @Getter
     String value;

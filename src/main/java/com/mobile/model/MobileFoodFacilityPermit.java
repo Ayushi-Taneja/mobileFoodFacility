@@ -2,9 +2,7 @@ package com.mobile.model;
 
 import com.mobile.constant.FacilityType;
 import com.mobile.constant.Status;
-import lombok.Builder;
 import lombok.Data;
-import lombok.Generated;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.springframework.data.annotation.Id;

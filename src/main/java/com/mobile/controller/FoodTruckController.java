@@ -19,11 +19,6 @@ public class FoodTruckController {
     @Autowired
     private FoodFacilityService foodFacilityService;
 
-    @GetMapping(value = "/hello")
-    public ResponseEntity hello(){
-        return ResponseEntity.ok("hello");
-    }
-
     @GetMapping(value = "/v1/searchBy/applicant/{name}")
     public ResponseEntity searchTruckDataByApplicant(@PathVariable("name") String applicantName){
         log.info("Received request to get all facility Data by applicant name {}", applicantName);
@@ -75,7 +70,7 @@ public class FoodTruckController {
         }
     }
 
-    @PostMapping(value = "/v1/addTruck")
+    @PostMapping(value = "/v1/add")
     public ResponseEntity addTruck(@RequestBody AddFoodTruckRequest addFoodTruckRequest){
         log.info("Received request to add food truck {}", addFoodTruckRequest);
         try {
@@ -89,7 +84,7 @@ public class FoodTruckController {
         }
     }
 
-    @GetMapping(value = "/v1/closestTruck")
+    @GetMapping(value = "/v1/closest")
     public ResponseEntity getClosestTruck(@RequestParam(value = "latitude", required = true) Double latitude,
                                           @RequestParam(value = "longitude", required = true) Double longitude) {
         log.info("Received request to get closest truck {},{}", latitude, longitude);
@@ -98,19 +93,6 @@ public class FoodTruckController {
             return ResponseEntity.ok(result);
         } catch (final Exception e){
             log.error("Error getting closest truck {},{}", latitude, longitude, e);
-            return ResponseEntity.internalServerError().build();
-        }
-    }
-
-    @PostMapping(value = "/v1/updateTruck/{locationId}")
-    public ResponseEntity addTruck(@PathVariable("locationId") Integer locationId,
-                                   @RequestBody AddFoodTruckRequest updateFoodTruckRequest){
-        log.info("Received request to update food truck for {}", locationId);
-        try {
-            FoodFacilityPermit result = foodFacilityService.updateFoodTruck(updateFoodTruckRequest);
-            return ResponseEntity.ok(result);
-        } catch (final Exception e){
-            log.error("Error updating food truck for {}", locationId, e);
             return ResponseEntity.internalServerError().build();
         }
     }

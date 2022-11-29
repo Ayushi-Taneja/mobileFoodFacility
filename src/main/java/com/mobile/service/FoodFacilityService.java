@@ -74,11 +74,4 @@ public class FoodFacilityService {
         FoodFacilityPermit result = convertToResponse.createFoodTruckResponse(closest.get(0));
         return result;
     }
-
-    public FoodFacilityPermit updateFoodTruck(AddFoodTruckRequest updateFoodTruckRequest) {
-        //TODO
-        return null;
-    }
-
-
 }
